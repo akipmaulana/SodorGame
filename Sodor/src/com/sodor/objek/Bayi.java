@@ -1,44 +1,36 @@
 package com.sodor.objek;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
-public class Orang extends Game{
+public class Bayi extends Karakter{
 
-	private static final int FRAME_COLS=6;
-	private static final int FRAME_ROWS=5;
-	
-	public Animation walkAnimation; 
-	public Texture walkSheet;
-	TextureRegion[] walkFrames;
-	TextureRegion currentFrame;
-	SpriteBatch batch;
-	float stateTime;
-	String aset;
-	public Orang() {
+	public Bayi() {
 		// TODO Auto-generated constructor stub
+		FRAME_COLS=4;
+		FRAME_ROWS=4;
 		create();
 	}
 	
 	@Override
 	public void create() {
 		// TODO Auto-generated method stub
-		walkSheet = new Texture(Gdx.files.internal("animation_sheet.png"));
-		TextureRegion[][] tmp = TextureRegion.split(walkSheet, walkSheet.getWidth()/FRAME_COLS, walkSheet.getHeight()/FRAME_ROWS);
-		walkFrames = new TextureRegion[FRAME_COLS*FRAME_ROWS];
+		Sheet = new Texture(Gdx.files.internal("bocah.png"));
+		TextureRegion[][] tmp = TextureRegion.split(Sheet, Sheet.getWidth()/FRAME_COLS, Sheet.getHeight()/FRAME_ROWS);
+		Frames = new TextureRegion[FRAME_COLS*FRAME_ROWS];
 		int index=0;
 		for(int i=0;i<FRAME_ROWS;i++){
 			for(int j=0;j<FRAME_COLS;j++){
-				walkFrames[index++]=tmp[i][j];
+				Frames[index++]=tmp[i][j];
 			}
 		}
-		walkAnimation = new Animation(0.025f, walkFrames);
+		animation = new Animation(0.25f, Frames);
 		batch = new SpriteBatch();
 		stateTime = 0f;
+		
 	}
 	
 	@Override
@@ -46,7 +38,7 @@ public class Orang extends Game{
 		// TODO Auto-generated method stub
 		super.render();
 		stateTime += Gdx.graphics.getDeltaTime();
-		currentFrame = walkAnimation.getKeyFrame(stateTime, true);
+		currentFrame = animation.getKeyFrame(stateTime, true);
 		batch.begin();
 			draw();
 		batch.end();
@@ -57,13 +49,15 @@ public class Orang extends Game{
 		// TODO Auto-generated method stub
 		super.dispose();
 		batch.dispose();
-		walkSheet.dispose();
-		
+		Sheet.dispose();
 	}
 	
 	private void draw() {
 		// TODO Auto-generated method stub
-		batch.draw(currentFrame, 50, 50);
-	}
+		batch.draw(currentFrame, 100, 100);
 
+	}
+	
+	
+	
 }
