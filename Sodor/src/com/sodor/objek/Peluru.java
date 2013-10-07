@@ -5,13 +5,13 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 
-public class Bola extends Karakter{
+public class Peluru extends Karakter{
 
 	// Sheet = bolaTExture
-	Rectangle bola;
+	public Rectangle bola;
 	float w,h,speedX1,speedY1;
 	
-	public Bola() {
+	public Peluru() {
 		// TODO Auto-generated constructor stub
 		create();
 	}
@@ -48,22 +48,29 @@ public class Bola extends Karakter{
 		Sheet.dispose();
 	}
 	
-	private void update() {
+	public void update(int x, int y) {
 		// TODO Auto-generated method stub
 		if(bola.x > w - bola.width){
-			speedX1 *= -1;
+			x *= -1;
 		}else if(bola.x<0){
-			speedX1 *= -1;
+			x *= -1;
 		}
 		
-		bola.x +=speedX1;
+		bola.x +=x;
 		
 		if(bola.y > h - bola.height){
-			speedY1 *= -1;
+			y *= -1;
 		}else if(bola.y<0){
-			speedY1 *= -1;
+			y *= -1;
 		}
-		bola.y +=speedY1;
+		bola.y +=y;
+		
+		
+		if ((bola.x < 0) || (bola.x > 800 - 16) || (bola.y < 0) || (bola.y > 480 - 17)){
+	        bola.x = 800/2;
+	        bola.y = 480/2;
+		}
+		
 
 	}
 	

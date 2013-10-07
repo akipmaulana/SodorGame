@@ -11,8 +11,8 @@ import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.sodor.objek.Bayi;
-import com.sodor.objek.Bola;
+import com.sodor.objek.PrajuritSenjata;
+import com.sodor.objek.Peluru;
 import com.sodor.objek.Karakter;
 import com.sodor.objek.Pemuda;
 
@@ -22,8 +22,8 @@ public class Sodor implements ApplicationListener {
 
 	
 	Pemuda akip;
-	Bayi unyu;
-	Bola ball;
+	PrajuritSenjata unyu;
+	Peluru ball;
 	@Override
 	public void create() {		
 		float w = Gdx.graphics.getWidth();
@@ -34,9 +34,9 @@ public class Sodor implements ApplicationListener {
 		batch = new SpriteBatch();
 		
 		
-		ball = new Bola();
+		ball = new Peluru();
 		akip = new Pemuda();
-		unyu = new Bayi();
+		unyu = new PrajuritSenjata();
 		
 	}
 
@@ -52,7 +52,9 @@ public class Sodor implements ApplicationListener {
 	public void render() {	
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-		
+		if(akip.rectangle.overlaps(ball.bola)){
+			ball.update(5,5);
+		}
 		
 		//camera.update();
 		batch.setProjectionMatrix(camera.combined);

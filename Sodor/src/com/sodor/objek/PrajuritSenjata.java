@@ -6,9 +6,9 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
-public class Bayi extends Karakter{
+public class PrajuritSenjata extends Karakter{
 
-	public Bayi() {
+	public PrajuritSenjata() {
 		// TODO Auto-generated constructor stub
 		FRAME_COLS=4;
 		FRAME_ROWS=4;
