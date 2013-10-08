@@ -1,6 +1,5 @@
-package com.sodor.jagoan;
+package com.sodor.objek;
 
-import com.akirah.sodor.Karakter;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
@@ -26,20 +25,23 @@ public class Pemuda extends Karakter{
 	TextureRegion[][] tmp;
 	TextureRegion[][] tmp_reverse;
 
-	public Pemuda() {
+	public Pemuda(Texture Sheet, Texture ReverseSheet, int FRAME_ROWS, int FRAME_COLS ) {
 		// TODO Auto-generated constructor stub
-		this.FRAME_COLS=6;
-		this.FRAME_ROWS=5;
+		this.FRAME_COLS=FRAME_COLS;
+		this.FRAME_ROWS=FRAME_ROWS;
+		this.Sheet=Sheet;
+		this.ReverseSheet=ReverseSheet;
+		tmp = TextureRegion.split(this.Sheet, this.Sheet.getWidth()/this.FRAME_COLS, this.Sheet.getHeight()/this.FRAME_ROWS);
+		tmp_reverse = TextureRegion.split(this.ReverseSheet, this.ReverseSheet.getWidth()/this.FRAME_COLS, this.ReverseSheet.getHeight()/this.FRAME_ROWS);
 		create();
 	}
 	
 	@Override
 	public void create() {
 		// TODO Auto-generated method stub
-		Sheet = new Texture(Gdx.files.internal("jagoan/animation_sheet.png"));
-		ReverseSheet = new Texture(Gdx.files.internal("jagoan/animation_sheet_reverse.png"));
-		tmp = TextureRegion.split(this.Sheet, this.Sheet.getWidth()/this.FRAME_COLS, this.Sheet.getHeight()/this.FRAME_ROWS);
-		tmp_reverse = TextureRegion.split(this.ReverseSheet, this.ReverseSheet.getWidth()/this.FRAME_COLS, this.ReverseSheet.getHeight()/this.FRAME_ROWS);
+//		Sheet = new Texture(Gdx.files.internal("animation_sheet.png"));
+//		ReverseSheet = new Texture(Gdx.files.internal("animation_sheet_reverse.png"));
+		
 		Frames = new TextureRegion[FRAME_COLS*FRAME_ROWS];
 		FramesReverse = new TextureRegion[FRAME_COLS*FRAME_ROWS];
 		int index=0;
@@ -94,11 +96,13 @@ public class Pemuda extends Karakter{
 	
 	private void draw() {
 		// TODO Auto-generated method stub
+		//batch.draw(currentFrame, rectangle.x, rectangle.y);
 		update();
 	}
 	
 	private void update() {
 		// TODO Auto-generated method stub
+//		OrthographicCamera camera = new OrthographicCamera();
 		
 		if(isLeft){
 			batch.draw(currentFrameR, rectangle.x, rectangle.y);

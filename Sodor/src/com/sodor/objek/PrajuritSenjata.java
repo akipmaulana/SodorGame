@@ -1,8 +1,7 @@
-package enemy;
+package com.sodor.objek;
 
 import java.util.ArrayList;
 
-import com.akirah.sodor.Karakter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Texture;
