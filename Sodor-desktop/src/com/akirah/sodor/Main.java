@@ -9,7 +9,7 @@ public class Main {
 		cfg.title = "Sodor";
 		cfg.useGL20 = true;
 		cfg.width = 800;
-		cfg.height = 460;
+		cfg.height = 480;
 		
 		new LwjglApplication(new Sodor(), cfg);
 	}
